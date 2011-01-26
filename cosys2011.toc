@@ -1,0 +1,12 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}\textsc {\leavevmode {\color {purple}R\'esum\'e de la proposition }}}{2}
+\contentsline {section}{\numberline {2}\textsc {\leavevmode {\color {purple}Contexte, positionnement et objectifs de la proposition }}}{2}
+\contentsline {subsection}{\numberline {2.1}\leavevmode {\color {navy}\textsc {Contexte et enjeux \'economiques et soci\'etaux }}}{2}
+\contentsline {subsection}{\numberline {2.2}\leavevmode {\color {navy}\textsc {Positionnement du projet }}}{2}
+\contentsline {subsection}{\numberline {2.3}\leavevmode {\color {navy}\textsc {\'Etat de l'art }}}{3}
+\contentsline {subsection}{\numberline {2.4}\leavevmode {\color {navy}\textsc {Objectifs et caract\`ere ambitieux/novateur du projet }}}{3}
+\contentsline {section}{\numberline {3}\textsc {\leavevmode {\color {purple}Programme scientifique et technique, organisation du projet }}}{3}
+\contentsline {section}{\numberline {4}\textsc {\leavevmode {\color {purple}Strat\'egie de valorisation, de protection et d?exploitation des r\'esultats }}}{3}
+\contentsline {section}{\numberline {5}\textsc {\leavevmode {\color {purple}Description du partenariat }}}{3}
+\contentsline {section}{\numberline {6}\textsc {\leavevmode {\color {purple}Justification scientifique des moyens demand\'es }}}{3}
+\contentsline {section}{\numberline {7}\textsc {\leavevmode {\color {purple}Annexes }}}{3}

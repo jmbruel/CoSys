@@ -1,0 +1,471 @@
+% adapted from cpp.sty
+%
+% rapport technique cosys
+%
+% usage:
+% 
+%   \documentclass[twoside]{report} % ou \documentclass[twoside]{article}
+%   \usepackage[lang, classification]{cosys}
+%   % options:
+%   % lang: francais ou english (defaut: francais)
+%   % classification: public, restricted, confidential (defaut: public).
+%   % 
+%   % Toutes les commandes suivantes sont facultatives.
+%   \date{...}
+%   \author{...}       % des \\ sont possibles
+%   \project{...}
+%   \title{...}
+%   \reference{...}    % Warning si absent
+%   \version{...}
+%   \status{...}
+%   \recipients{...}   % des \\ sont possibles
+%
+%   \begin{document}
+%   \makecosys
+%   ...
+%   \end{document}
+% 
+
+\typeout{cosys: Style de rapport technique CoSys}
+\ProvidesPackage{cosys}
+\RequirePackage{graphicx} 
+\RequirePackage{fancyheadings}
+\RequirePackage{lastpage}
+\RequirePackage{url}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Options
+% defaut: francais, public
+%
+% Langage
+\newif\ifcosys@french
+\cosys@frenchtrue
+\DeclareOption{francais}{\cosys@frenchtrue}
+\DeclareOption{english}{\cosys@frenchfalse}
+% Classification
+\countdef\cosys@level=100  % \cosys@level is \count100
+\cosys@level=0
+\DeclareOption{public}{\cosys@level=0}
+\DeclareOption{restricted}{\cosys@level=1}
+\DeclareOption{confidential}{\cosys@level=2}
+\DeclareOption*{\PackageWarning{cosys}{Unknown option `\CurrentOption'}}
+
+\ExecuteOptions{francais,public}
+\ProcessOptions\relax
+
+% Calcul du texte de la classification.
+\def\cosys@classification{\ifcase\cosys@level\or
+ \w@restricted \or 
+ \w@confidential\space\w@cosys 
+ \fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Mots clés
+% 
+\def\w@public{Public}
+\def\w@classification{Classification}
+\def\w@restricted{\ifcosys@french Restreint \else Restricted \fi}
+\def\w@confidential{\ifcosys@french Confidentiel \else Confidential \fi}
+\def\w@secret{Secret}
+\def\w@project{\ifcosys@french Projet \else Project \fi}
+\def\w@cosys{CoSys}
+\def\w@date{Date}
+\def\w@author{\ifcosys@french Auteurs \else Authors \fi}
+\def\w@title{\ifcosys@french Titre \else Title \fi}
+\def\w@ref{\ifcosys@french Rapport No. \else Report number \fi}
+\def\w@version{Version}
+\def\w@status{\ifcosys@french Statut \else Status \fi}
+\def\w@rcpt{\ifcosys@french Destinataires \else Recipients \fi}
+\def\w@header{\ifcosys@french Rapport Technique CoSys \else CoSys Technical Report \fi}
+\def\notesname{Notes}
+\def\keywordsname{\ifcosys@french Mots cl\'{e}s \else Keywords \fi}
+\def\acknowledgementsname{\ifcosys@french Remerciements \else Acknowledgments \fi}
+\def\abstractname{\ifcosys@french R\'{e}sum\'{e} \else Abstract \fi}
+\def\singleAuthorAddress{\ifcosys@french Adresse \else Address \fi}
+\def\multipleAuthorsAddresses{\ifcosys@french Adresses \else Addresses \fi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Date (français ou anglais)
+%
+% on réutilise les macros \month, \date, \@date et \today
+% de la classe utilisée.
+%
+\ifcosys@french
+\def\today{\number\day\space\ifcase\month\or
+  Janvier\or F\'{e}vrier\or Mars\or Avril\or Mai\or Juin\or
+  Juillet\or Ao\^{u}t\or Septembre\or Octobre\or Novembre\or D\'{e}cembre\fi
+  \space\number\year}
+\else
+\def\today{\ifcase\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space\number\day, \number\year}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Commandes
+% NB: on réutilise les macros \@title and \@author de la classe
+% utilisée, des valeurs par defaut (\relax) leur sont affectées
+% (en particulier, on autorise un titre vide).
+%
+\newcommand\project[1]{\def\cosys@project{#1}}
+\let\cosys@project=\relax
+
+\let\@title=\relax
+
+\let\@author=\relax
+
+\newcommand{\runningtitle}[1]{\def\cosys@rtitle{#1}}
+\let\cosys@rtitle=\relax
+
+\newcommand{\reference}[1]{\def\cosys@ref{#1}}
+\let\cosys@ref=\relax
+
+\newcommand{\version}[1]{\def\cosys@version{#1}}
+\let\cosys@version=\relax
+
+\newcommand{\status}[1]{\def\cpp@status{#1}}
+\let\cosys@status=\relax
+
+\newcommand{\recipients}[1]{\def\cosys@rcpt{#1}}
+\let\cosys@rcpt=\relax
+
+\let\@nd=\relax
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Headers 
+%
+\lhead[\cosys@classification]{%
+\if\cosys@rtitle\@nd
+\@title
+\else
+\cosys@rtitle
+\fi}
+
+\rhead[%
+\if\cosys@rtitle\@nd
+\@title
+\else
+\cosys@rtitle
+\fi]{\cosys@classification}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Footers
+%
+\cfoot{\thepage/\pageref{LastPage}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% La page de garde
+%
+\def\@makecosyscover{%
+\begin{titlepage}
+                                % pas d'en-tete ni de pied de page ici
+  \thispagestyle{empty}
+                                %
+                                % Affiche les logos
+  \noindent
+  \includegraphics[scale=0.45]{anr}
+  \begin{center}
+    \includegraphics[scale=0.45]{entete}
+  \end{center} \vskip 16\p@
+  \begin{center}
+   \rule{\textwidth}{1pt} \\[5mm]
+   {\sf\huge \sc{\ifcosys@french Rapport Technique CoSys \else CoSys Technical Report \fi}}
+   %\raisebox{5mm}
+   {\rule{\textwidth}{1pt}}
+   \end{center}
+\null\vfill
+   \begin{center}%
+   {\LARGE \@title \par}%
+   \end{center}\par
+\vskip 34\p@
+% \null\vfil
+\begin{center}
+   \large
+   \begin{tabular}{l@{\quad:\quad}l} 
+     \textbf{\w@date} & \@date \\  
+     \if\@author\@nd\else\textbf{\w@author} & % 
+     \vtop\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore\@author\egroup\\[0.74em] \fi 
+
+%     \if\cosys@project\@nd\else\textbf{\w@project} & \cosys@project \\ \fi 
+     \if\@title\@nd\else\textbf{\w@title} & %
+     \vtop\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore\@title\egroup\\[0.74em] \fi 
+     \if\cosys@ref\@nd\PackageWarning{cosys}{No cosys report number given.}\fi 
+     \if\cosys@ref\@nd 
+       \if\cosys@version\@nd 
+       \else\textbf{\w@version} & \cosys@version\\[0.74em]
+       \fi 
+     \else 
+       \if\cosys@version\@nd\textbf{\w@ref}   & \cosys@ref\\[0.74em]
+       \else\textbf{\w@ref / \w@version} & \cosys@ref / \cosys@version\\[0.74em]
+       \fi 
+     \fi 
+     \if\cosys@classification\@nd\else\textbf{\w@classification} & \cosys@classification \\ \fi 
+     \if\cosys@status\@nd\else\textbf{\w@status} & \cosys@status\\[0.74em] \fi
+
+     \if\cosys@rcpt\@nd\else\textbf{\w@rcpt} & 
+     \vtop\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore\cosys@rcpt\egroup\\ \fi 
+   \end{tabular} 
+\end{center}
+\null\vfill\footnotesize
+   %\hspace{-2cm}
+   \begin{center}
+     \begin{tabular}{c}
+       \begin{tabular}[t]{c}
+         \textbf{IRIT}\\[2pt]
+         Laboratoire CNRS/IRIT\\
+         118 rte de Narbonne\\
+         31000 Toulouse, France\\
+         \url{http://www.irit.fr/}
+       \end{tabular}
+       \ 
+       \begin{tabular}[t]{c}
+         \textbf{LIFC}\\[2pt]
+         LIFC\\
+		6, Route de Gray\\
+         25030 Besan\c{c}on Cedex, France\\
+         \url{http://lifc.univ-fcomte.fr/}
+       \end{tabular}
+       \
+       \begin{tabular}[t]{c}
+         \textbf{LISI/ENSMA}\\[2pt]
+         LISI / ENSMA\\
+		T\'el\'eport 2 - 1 avenue Cl\'ement Ader -- BP 40109\\
+		86961 Futuroscope Chasseneuil Cedex - France\\
+         \url{http://www.lisi.ensma.fr}
+       \end{tabular}
+     \end{tabular}
+   \end{center}
+%Projet cosys du programme INS de l'ANR
+\end{titlepage} 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% commande \makecosys: 1 page de garde, 1 page avec resum� et passage 
+% au style fancy (head + foot) pour le reste.
+% 
+\newcommand\makecosys{%
+\begingroup%
+\thispagestyle{empty}
+%\pagenumbering{roman}
+\catcode`\@=11
+%\input art12.sty
+\catcode`\@=12
+\begingroup%
+\catcode`\@=11
+\cosyscoverlayout  
+\let\do\noexpand  
+\@makecosyscover
+%%
+\newpage
+\ifvoid\keywordsBox\else
+\ifvoid\acknowledgementsBox\else
+\ifdim\ht\acknowledgementsBox>\ht\keywordsBox\global\ht\keywordsBox\ht\acknowledgementsBox\else\global\ht\acknowledgementsBox\ht\keywordsBox\fi%
+\ifdim\dp\acknowledgementsBox>\dp\keywordsBox\global\dp\keywordsBox\dp\acknowledgementsBox\else\global\dp\acknowledgementsBox\dp\keywordsBox\fi%
+\fi\fi
+\cosyscoverlayout
+\thispagestyle{empty}
+\noindent\mbox{}%
+% necessary to produce a empty page if no notes and no acknowledgements are given
+\ifvoid\addressBox\else\showAddresses\vfill\fi%
+\ifvoid\abstractBox\else\showAbstract\vfill\fi
+\ifvoid\keywordsBox\else\showKeywords\vfill\fi
+\ifvoid\acknowledgementsBox\else\showAcknowledgements\vfill\fi
+\ifvoid\pnbox\else\showNotes\vfill\fi%
+\endgroup\endgroup
+\clearpage
+\newpage%
+%%
+% Début du document
+%\vsize\textheight %
+\hsize\textwidth%
+%\@colht\textheight %
+%\@colroom\textheight%
+\pagestyle{fancy}
+\addtocounter{page}{-2}
+\pagenumbering{arabic}%
+}
+
+
+%======================================================================
+% Adresses
+%----------------------------------------------------------------------
+\newbox\addressBox
+\newenvironment{address}[0]{%
+\global\setbox\addressBox=\hbox\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore}{%
+\egroup\gdef\addressListName{\singleAuthorAddress}}
+\newenvironment{addresses}[0]{%
+\global\setbox\addressBox=\hbox\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore}{%
+\egroup\gdef\addressListName{\multipleAuthorsAddresses}}
+\newcommand{\showAddresses}[0]{%
+\bigskip\noindent\textbf{\addressListName~:}~\copy\addressBox\par
+}
+
+%======================================================================
+% Publication notes
+% The author can write his publication notes in a publicationNotes
+% environment included in the preamble of the report.
+%
+% \begin{notes}
+% ...
+% \end{notes}
+% The environment publicationNotes actually defines a vbox containing 
+% the publication notes.
+%
+% \showNotes
+% Displays this vbox on the cover sheets at the appropriate place
+%----------------------------------------------------------------------
+\newbox\pnbox
+\newenvironment{notes}[0]{%
+\global\setbox\pnbox=\hbox\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore}{%
+\egroup}
+\newcommand{\showNotes}[0]{%
+\bigskip\noindent\textbf{\notesname~:}~\copy\pnbox\par
+}
+
+%======================================================================
+% Acknowledgements
+% The author can write his acknowledgements in an acknowledgement
+% environment included in the preamble of the report.
+%
+% \begin{acknowledgements}
+% ...
+% \end{acknowledgements}
+% The environment acknowledgement actually defines a vbox containing the
+% acknowledgements
+%
+% \showAcknowledgements
+% Displays this vbox on the cover sheets at the appropriate place
+%----------------------------------------------------------------------
+\newbox\acknowledgementsBox
+\newenvironment{acknowledgements}[0]{%
+\global\setbox\acknowledgementsBox=\hbox\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore}{%
+\egroup}
+\newcommand{\showAcknowledgements}[0]{%
+\noindent\textbf{\acknowledgementsname~:}~\copy\acknowledgementsBox\par
+}
+
+%======================================================================
+% Keywords
+% The author can write a list of keywords in a keyword environment
+% included in the preamble of the report.
+%
+% \begin{keyword}
+% ...
+% \end{keyword}
+% The environment keyword actually defines a vbox containing the
+% keywords
+%
+% \showKeywords
+% Displays this vbox on the cover sheets at the appropriate place
+%----------------------------------------------------------------------
+\newbox\keywordsBox
+\newenvironment{keywords}[0]{%
+\global\setbox\keywordsBox=\vtop\bgroup\cosyscoverlayout\hsize\textwidth\@boxrestore}{%
+\egroup%
+}
+\newcommand{\showKeywords}[0]{%
+\noindent\textbf{\keywordsname~:}~\copy\keywordsBox\par
+}
+
+%======================================================================
+% Abstract 
+% The author can write his abstract in an abstract environment
+% included in the preamble of the report.
+%
+% \begin{abstract}
+% ...
+% \end{abstract}
+% The environment abstract actually defines a vbox containing the
+% abstract.
+%
+% \showAbstract
+% Displays this vbox on the cover sheets at the appropriate place
+%----------------------------------------------------------------------
+\newbox\abstractBox
+\def\abstract{\global\setbox\abstractBox=\vtop\bgroup%
+\cosyscoverlayout %
+\newlength\alength\alength\textwidth\addtolength{\alength}{-3cm} %
+\hsize\alength\@boxrestore}
+\def\endabstract{\egroup}
+\newcommand{\showAbstract}[0]{%
+\noindent\textbf{\abstractname~:}~\copy\abstractBox\par
+}
+
+%======================================================================
+% Declare that the environments 
+% - publicationNotes
+% - acknowledgements
+% - keywords
+% - address
+% - addresses
+% can only be used in the preamble. Thus the only environment defined
+% here that can be used in the document is
+% + abstract
+%----------------------------------------------------------------------
+\def\do{\noexpand\do\noexpand}
+\edef\@preamblecmds{\@preamblecmds%
+\do\publicationNotes \do\endpublicationNotes%
+\do\acknowledgements \do\endacknowledgements%
+\do\keywords \do\endkeywords%
+\do\address \do\endaddress%
+\do\addresses \do\endaddresses}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \cosyscoverlayout
+% layout de la page de garde
+%
+\def\cosyscoverlayout{%
+%\textheight=25.5cm%
+%\textwidth=16.15cm%
+%\oddsidemargin=-2mm%
+%\evensidemargin=-2mm%
+%\topmargin=-0.6cm%
+\relax
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \@boxrestore
+% sets layout parameters appropriately for text in a vertical box
+%
+\def\@boxrestore{%
+\let\par\@@par%
+\let\-\@dischyph%
+\let\'\@acci%
+\let\`\@accii%
+\let\=\@acciii%
+\everypar{}\linewidth\hsize%
+\@totalleftmargin\z@% 
+\leftskip\z@% 
+\rightskip\z@% 
+\@rightskip\z@%
+\parfillskip\@flushglue%
+\lineskip\normallineskip%
+\baselineskip\normalbaselineskip%
+\let\\=\@normalcr%
+\sloppy\noindent\ignorespaces%
+}
+
+\endinput
+
+
+%%
+%% End of file `cosys.sty'.

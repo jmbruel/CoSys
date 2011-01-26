@@ -1,0 +1,105 @@
+%====================================
+% Titre                 : Exemple de rapport de projet
+% Last Update           : 25/01/2011
+% 						: first draft taken from the CPP project (http://www.lix.polytechnique.fr/~bouissou/cpp/index.php?n=Main.Documents)
+%====================================
+\documentclass[oneside]{article} % or report
+%====================================
+\usepackage{a4wide}
+\usepackage[francais,public]{anr}
+% options:
+% lang: francais ou english (defaut: francais)
+% classification: public, restricted, confidential (defaut: public).
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{latexsym,times}
+\usepackage{tabularx}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}         % Palatino needs more leading (space between lines)
+
+\newcommand\Mycomment[1]%          %  temporary remark for the
+ {\par\smallskip                     %  authors:
+  \begin{center}%                    %
+   \fbox%                            %    --------
+   {\parbox{0.9\linewidth}%          %    |  #1  |
+    {\raggedright--- 
+	\textcolor{red}{Note :} #1}%     %    --------
+   }%                                %
+  \end{center}%                      %
+  \par\smallskip                     %
+ }
+%\renewcommand\Mycomment[1]{}
+\date{\today}
+\author{Jean-Michel Bruel}
+\project{MACAO, IRIT, CNRS}
+\reference{0.0}
+\title{Un exemple de rapport de projet}
+\version{1}
+\status{Draft}
+
+%--------------------------- Notes (si besoin) ---------------------------
+%\begin{notes} % used with \showNotes
+%Ceci est une note
+%\end{notes}
+%-------------------------------------------------------------------------
+
+%===========================================================
+\begin{document}
+\pagestyle{fancy}
+%\showNotes
+\makecosys
+~\\\vspace{1cm}
+\tableofcontents
+%===========================================================
+\Mycomment{les encadr\'es comme celui-ci sont produits avec une
+  commande \verb:comment:, son but est d'inclure des commentaires pour les
+  co-auteurs du document.  Ils doivent dispara\^{\i}tre dans la version finale
+  du document.}
+
+%===========================================================
+\masection{R\'esum\'e de la proposition}{Executive summary}\label{sec:intro}
+%===========================================================
+\input{resume}
+%===========================================================
+
+%===========================================================
+\masection{Contexte, positionnement et objectifs de la proposition}{Context, position and objectives of the proposal}\label{sec:contexte}
+%===========================================================
+\input{contexte}
+%===========================================================
+
+%===========================================================
+\masection{Programme scientifique et technique, organisation du projet}{Scientific and technical programme, Project organisation}\label{sec:organisation}
+%===========================================================
+%\input{}
+%===========================================================
+
+%===========================================================
+\masection{Stratégie de valorisation, de protection et d?exploitation des résultats }{Dissemination and exploitation of results. intellectual property}\label{sec:valo}
+%===========================================================
+\input{.tex}
+%===========================================================
+
+%===========================================================
+\masection{Description du partenariat }{Consortium description }\label{sec:consortium}
+%===========================================================
+\input{.tex}
+%===========================================================
+
+%===========================================================
+\masection{Justification scientifique des moyens demandés}{Scientific justification of requested ressources}\label{sec:moyens}
+%===========================================================
+\input{.tex}
+%===========================================================
+
+%===========================================================
+\masection{Annexes}{Annexes}\label{sec:annexes}
+%===========================================================
+\input{.tex}
+%===========================================================
+
+\bibliographystyle{alpha}
+%\bibliography{cosys}
+% ficher .bib a fournir!
+
+\end{document}

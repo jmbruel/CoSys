@@ -1,0 +1,238 @@
+% adapted from cpp.sty : (http://www.lix.polytechnique.fr/~bouissou/cpp/index.php?n=Main.Documents)
+%
+% rapport technique cosys
+%
+% usage:
+% 
+%   \documentclass[twoside]{report} % ou \documentclass[twoside]{article}
+%   \usepackage[lang, classification]{cosys}
+%   % options:
+%   % lang: francais ou english (defaut: francais)
+%   % classification: public, restricted, confidential (defaut: public).
+%   % 
+%   % Toutes les commandes suivantes sont facultatives.
+%   \date{...}
+%   \author{...}       % des \\ sont possibles
+%   \project{...}
+%   \title{...}
+%   \reference{...}    % Warning si absent
+%   \version{...}
+%   \status{...}
+%   \recipients{...}   % des \\ sont possibles
+%
+%   \begin{document}
+%   \makecosys
+%   ...
+%   \end{document}
+% 
+
+\typeout{cosys: Style de rapport technique CoSys}
+\ProvidesPackage{cosys}
+\RequirePackage{graphicx} 
+\RequirePackage{fancyheadings}
+\RequirePackage{lastpage}
+\RequirePackage{url}
+\RequirePackage{amssymb}
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage{textcomp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Options
+% defaut: francais, public
+%
+% Langage
+\newif\ifcosys@french
+\cosys@frenchtrue
+\DeclareOption{francais}{\cosys@frenchtrue}
+\DeclareOption{english}{\cosys@frenchfalse}
+% Classification
+\countdef\cosys@level=100  % \cosys@level is \count100
+\cosys@level=0
+\DeclareOption{public}{\cosys@level=0}
+\DeclareOption{restricted}{\cosys@level=1}
+\DeclareOption{confidential}{\cosys@level=2}
+\DeclareOption*{\PackageWarning{cosys}{Unknown option `\CurrentOption'}}
+
+\ExecuteOptions{francais,public}
+\ProcessOptions\relax
+
+% Calcul du texte de la classification.
+\def\cosys@classification{\ifcase\cosys@level\or
+ \w@restricted \or 
+ \w@confidential\space\w@cosys 
+ \fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Mots clés
+% 
+\def\w@public{Public}
+\def\w@classification{Classification}
+\def\w@restricted{\ifcosys@french Restreint \else Restricted \fi}
+\def\w@confidential{\ifcosys@french Confidentiel \else Confidential \fi}
+\def\w@secret{Secret}
+\def\w@project{\ifcosys@french Projet \else Project \fi}
+\def\w@cosys{CoSys}
+\def\w@date{Date}
+\def\w@author{\ifcosys@french Auteurs \else Authors \fi}
+\def\w@title{\ifcosys@french Titre \else Title \fi}
+\def\w@ref{\ifcosys@french Rapport No. \else Report number \fi}
+\def\w@version{Version}
+\def\w@status{\ifcosys@french Statut \else Status \fi}
+\def\w@rcpt{\ifcosys@french Destinataires \else Recipients \fi}
+\def\w@header{\ifcosys@french Rapport Technique CoSys \else CoSys Technical Report \fi}
+\def\notesname{Notes}
+\def\keywordsname{\ifcosys@french Mots cl\'{e}s \else Keywords \fi}
+\def\acknowledgementsname{\ifcosys@french Remerciements \else Acknowledgments \fi}
+\def\abstractname{\ifcosys@french R\'{e}sum\'{e} \else Abstract \fi}
+\def\singleAuthorAddress{\ifcosys@french Adresse \else Address \fi}
+\def\multipleAuthorsAddresses{\ifcosys@french Adresses \else Addresses \fi}
+\def\w@acro{\ifcosys@french Acronyme \else Acronym \fi}
+%==================================== Infos sur le projet et l'appel
+\def\acronyme{\sc{CoSys}}
+\def\titreProjet{\textbf{Co}nception de \textbf{Sys}t\`emes}
+\def\titreProjetUK{\textbf{Co}design of \textbf{Sys}tems}
+\def\annee{2011}
+\def\totalDemande{900K}
+\def\totalDuree{36}
+\def\appel{\textsc{Ing\'enierie Num\'erique \& S\'ecurit\'e}}
+%====================================
+\xdefinecolor{navy}{named}{Navy}
+\xdefinecolor{purple}{named}{DarkMagenta}
+\newcommand{\navy}[1]{\textcolor{navy}{#1}}
+\newcommand{\masection}[2]{\section{\textsc{\textcolor{purple}{\ifcosys@french #1 \else #2 \fi}}}}
+\newcommand{\masubsection}[2]{\subsection{\textcolor{navy}{\textsc{\ifcosys@french #1 \else #2 \fi}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Date (français ou anglais)
+%
+% on réutilise les macros \month, \date, \@date et \today
+% de la classe utilisée.
+%
+\ifcosys@french
+\def\today{\number\day\space\ifcase\month\or
+  Janvier\or F\'{e}vrier\or Mars\or Avril\or Mai\or Juin\or
+  Juillet\or Ao\^{u}t\or Septembre\or Octobre\or Novembre\or D\'{e}cembre\fi
+  \space\number\year}
+\else
+\def\today{\ifcase\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space\number\day, \number\year}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Commandes
+% NB: on réutilise les macros \@title and \@author de la classe
+% utilisée, des valeurs par defaut (\relax) leur sont affectées
+% (en particulier, on autorise un titre vide).
+%
+\newcommand\project[1]{\def\cosys@project{#1}}
+\let\cosys@project=\relax
+
+\let\@title=\relax
+
+\let\@author=\relax
+
+\newcommand{\runningtitle}[1]{\def\cosys@rtitle{#1}}
+\let\cosys@rtitle=\relax
+
+\newcommand{\reference}[1]{\def\cosys@ref{#1}}
+\let\cosys@ref=\relax
+
+\newcommand{\version}[1]{\def\cosys@version{#1}}
+\let\cosys@version=\relax
+
+\newcommand{\status}[1]{\def\cpp@status{#1}}
+\let\cosys@status=\relax
+
+\newcommand{\recipients}[1]{\def\cosys@rcpt{#1}}
+\let\cosys@rcpt=\relax
+
+\let\@nd=\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \cosyscoverlayout
+% layout de la page de garde
+%
+\def\cosyscoverlayout{%
+\textheight=19cm%
+\textwidth=16.15cm%
+%\oddsidemargin=-2mm%
+%\evensidemargin=-2mm%
+\topmargin=-0.6cm%
+\relax
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Headers 
+%
+\lhead{}
+\chead[\cosys@classification]{%
+{\begin{center}\begin{tabular*}{\textwidth}{lllr}    
+\parbox{4cm}{\includegraphics[scale=0.45]{anr}} & \parbox{4.5cm}{\textsc{\navy{Programme} \appel}}  & \parbox{1.5cm}{~} & \parbox{3cm}{\textsc{\navy{Projet} \acronyme}} \\
+~ & ~ & ~ & ~ \\
+~ & \textsc{\navy{\'Edition}} \annee & ~ & \textsc{\navy{Document Scientifique}}\\
+\end{tabular*}\end{center}}
+}
+\rhead{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Footers
+%
+\lfoot{ANR-GUI-AAP-04 -- Doc Scientifique \annee}
+\cfoot{}
+\rfoot{\thepage/\pageref{LastPage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% commande \makecosys: 1 page de garde, 1 page avec resum� et passage 
+% au style fancy (head + foot) pour le reste.
+% 
+\newcommand\makecosys{%
+\cosyscoverlayout  
+\thispagestyle{fancy}
+~\\\vspace{2cm}
+\begin{center}
+\linespread{1.5}
+   \large
+   \begin{tabular}{|l|l|} 
+	\hline
+     \navy{\textbf{\w@acro}} & \acronyme \\  
+	\hline
+     \navy{\textbf{Titre du projet}} & \textsc{\titreProjet} \\  
+	\hline
+     \navy{\textbf{Proposal title}} & \textsc{\titreProjetUK} \\ 
+	\hline
+     \navy{\textbf{Axe(s) / theme(s)}} & $\square$ 1~~~ $\blacksquare$ 2~~~ $\square$ 3~~~ $\square$ 4~~~ $\square$ 5~~~\\ 
+	\hline
+     \navy{\textbf{Type de recherche /}} & $\square$ Recherche Fondamentale / Basic Research\\ 
+     \navy{\textbf{Type of research}}    & $\blacksquare$ Recherche Industrielle / Industrial Research\\ 
+     ~ 							  & $\square$ D\'eveloppement Exp\'erimentale / Experimental Dev.\\ 
+	\hline
+     \navy{\textbf{Aide totale demand\'ee /}} & \totalDemande \texteuro \\ 
+     \navy{\textbf{Grant requested}} & ~ \\ 
+	\hline
+     \navy{\textbf{Dur\'ee du projet /}} & \totalDuree~\navy{mois} / \totalDuree~\navy{months} \\ 
+     \navy{\textbf{Project duration/}} & ~ \\ 
+	\hline
+   \end{tabular} 
+\end{center}
+\pagestyle{fancy}
+%\addtocounter{page}{-2}
+\pagenumbering{arabic}%
+}
+\endinput
+
+
+%%
+%% End of file `cosys.sty'.
