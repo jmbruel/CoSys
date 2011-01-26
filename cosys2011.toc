@@ -6,6 +6,7 @@
 \contentsline {subsection}{\numberline {2.3}\leavevmode {\color {navy}\textsc {\'Etat de l'art }}}{3}
 \contentsline {subsection}{\numberline {2.4}\leavevmode {\color {navy}\textsc {Objectifs et caract\`ere ambitieux/novateur du projet }}}{3}
 \contentsline {section}{\numberline {3}\textsc {\leavevmode {\color {purple}Programme scientifique et technique, organisation du projet }}}{3}
+\contentsline {subsection}{\numberline {3.1}\leavevmode {\color {navy}\textsc {Programme scientifique et structuration du projet }}}{3}
 \contentsline {section}{\numberline {4}\textsc {\leavevmode {\color {purple}Strat\'egie de valorisation, de protection et d?exploitation des r\'esultats }}}{3}
 \contentsline {section}{\numberline {5}\textsc {\leavevmode {\color {purple}Description du partenariat }}}{3}
 \contentsline {section}{\numberline {6}\textsc {\leavevmode {\color {purple}Justification scientifique des moyens demand\'es }}}{3}
