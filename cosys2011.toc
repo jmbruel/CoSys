@@ -2,12 +2,22 @@
 \contentsline {section}{\numberline {1}\textsc {\leavevmode {\color {purple}R\'esum\'e de la proposition }}}{2}
 \contentsline {section}{\numberline {2}\textsc {\leavevmode {\color {purple}Contexte, positionnement et objectifs de la proposition }}}{2}
 \contentsline {subsection}{\numberline {2.1}\leavevmode {\color {navy}\textsc {Contexte et enjeux \'economiques et soci\'etaux }}}{2}
-\contentsline {subsection}{\numberline {2.2}\leavevmode {\color {navy}\textsc {Positionnement du projet }}}{2}
+\contentsline {subsection}{\numberline {2.2}\leavevmode {\color {navy}\textsc {Positionnement du projet }}}{3}
 \contentsline {subsection}{\numberline {2.3}\leavevmode {\color {navy}\textsc {\'Etat de l'art }}}{3}
 \contentsline {subsection}{\numberline {2.4}\leavevmode {\color {navy}\textsc {Objectifs et caract\`ere ambitieux/novateur du projet }}}{3}
 \contentsline {section}{\numberline {3}\textsc {\leavevmode {\color {purple}Programme scientifique et technique, organisation du projet }}}{3}
-\contentsline {subsection}{\numberline {3.1}\leavevmode {\color {navy}\textsc {Programme scientifique et structuration du projet }}}{3}
-\contentsline {section}{\numberline {4}\textsc {\leavevmode {\color {purple}Strat\'egie de valorisation, de protection et d?exploitation des r\'esultats }}}{3}
-\contentsline {section}{\numberline {5}\textsc {\leavevmode {\color {purple}Description du partenariat }}}{3}
-\contentsline {section}{\numberline {6}\textsc {\leavevmode {\color {purple}Justification scientifique des moyens demand\'es }}}{3}
-\contentsline {section}{\numberline {7}\textsc {\leavevmode {\color {purple}Annexes }}}{3}
+\contentsline {section}{\numberline {4}\textsc {\leavevmode {\color {purple}Strat\'egie de valorisation, de protection et d'exploitation des r\'esultats }}}{3}
+\contentsline {section}{\numberline {5}\textsc {\leavevmode {\color {purple}Description du partenariat }}}{4}
+\contentsline {subsection}{\numberline {5.1}\leavevmode {\color {navy}\textsc {Description, ad\'equation et compl\'ementarit\'e des partenaires }}}{4}
+\contentsline {subsubsection}{\numberline {5.1.1}LIFC}{4}
+\contentsline {subsubsection}{\numberline {5.1.2}LISI}{4}
+\contentsline {subsubsection}{\numberline {5.1.3}IRIT}{4}
+\contentsline {subsubsection}{\numberline {5.1.4}...}{4}
+\contentsline {subsection}{\numberline {5.2}\leavevmode {\color {navy}\textsc {Qualification du coordinateur du projet }}}{4}
+\contentsline {subsection}{\numberline {5.3}\leavevmode {\color {navy}\textsc {Qualification, r\^ole et implication des participants }}}{4}
+\contentsline {section}{\numberline {6}\textsc {\leavevmode {\color {purple}Justification scientifique des moyens demand\'es }}}{5}
+\contentsline {subsection}{\numberline {6.1}\leavevmode {\color {navy}\textsc {... }}}{5}
+\contentsline {section}{\numberline {7}\textsc {\leavevmode {\color {purple}Annexes }}}{6}
+\contentsline {subsection}{\numberline {7.1}\leavevmode {\color {navy}\textsc {R\'ef\'erences bibliographiques }}}{6}
+\contentsline {subsection}{\numberline {7.2}\leavevmode {\color {navy}\textsc {Biographies }}}{6}
+\contentsline {subsection}{\numberline {7.3}\leavevmode {\color {navy}\textsc {Implication des personnes dans d?autres contrats }}}{6}

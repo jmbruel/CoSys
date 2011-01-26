@@ -103,7 +103,9 @@
 \newcommand{\navy}[1]{\textcolor{navy}{#1}}
 \newcommand{\masection}[2]{\section{\textsc{\textcolor{purple}{\ifcosys@french #1 \else #2 \fi}}}}
 \newcommand{\masubsection}[2]{\subsection{\textcolor{navy}{\textsc{\ifcosys@french #1 \else #2 \fi}}}}
-
+\newcommand{\masubsubsection}[2]{\subsubsection*{\textcolor{purple}{\ifcosys@french #1 \else #2 \fi}}}
+\newcommand{\monlabel}[2]{\textsc{\ifcosys@french #1 \else #2 \fi}}
+\newcommand{\masec}[1]{section~\ref{sec:#1}}       % abstract for sections
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Date (français ou anglais)
