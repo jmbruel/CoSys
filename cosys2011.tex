@@ -7,12 +7,15 @@
 %====================================
 \usepackage{a4wide}
 \usepackage[francais,public]{anr}
+%\usepackage[english,public]{anr}
 % options:
 % lang: francais ou english (defaut: francais)
 % classification: public, restricted, confidential (defaut: public).
 \usepackage[french]{babel}
 \usepackage[latin1]{inputenc}
+\usepackage{shadow}
 \usepackage{latexsym,times}
+\usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage[sc]{mathpazo}
 \linespread{1.05}         % Palatino needs more leading (space between lines)
@@ -30,19 +33,40 @@
  }
 %\renewcommand\Mycomment[1]{}
 \date{\today}
-\author{Jean-Michel Bruel}
-\project{MACAO, IRIT, CNRS}
-\reference{0.0}
-\title{Un exemple de rapport de projet}
-\version{1}
-\status{Draft}
+%\author{Jean-Michel Bruel}
+%\project{MACAO, IRIT, CNRS}
+%\reference{0.0}
+\title{Conception SySML pour les systèmes embarqués}
+%\version{1}
+%\status{Draft}
 
 %--------------------------- Notes (si besoin) ---------------------------
 %\begin{notes} % used with \showNotes
 %Ceci est une note
 %\end{notes}
 %-------------------------------------------------------------------------
-
+%------------------------------------
+%                               URLs
+%------------------------------------
+\definecolor{jmbBlue}{rgb}{0,0.08,0.45}
+\hypersetup{pdftex%
+,bookmarks=true%
+,bookmarksnumbered=true%
+,pdfstartview=FitH%
+,pdfpagelayout=SinglePage%
+,colorlinks=true,linkcolor=jmbBlue,citecolor=jmbBlue,filecolor=jmbBlue,pagecolor=jmbBlue,urlcolor=jmbBlue%Maroon%
+,pdfnewwindow=true%
+,backref=true%
+}
+\input{definition}
+%==================================== Infos sur le projet et l'appel
+\def\acronyme{\sc{CoSys}}
+\def\titreProjet{\textbf{Co}nception de \textbf{Sys}ML pour les systèmes embarqués}
+\def\titreProjetUK{SysML-based Design of Embedded Systems}
+\def\annee{2011}
+\def\totalDemande{900K}
+\def\totalDuree{36}
+\def\appel{\textsc{Ing\'enierie Num\'erique \& S\'ecurit\'e}}
 %===========================================================
 \begin{document}
 \pagestyle{fancy}
@@ -61,19 +85,19 @@ Avant de soumettre ce document :
 \end{itemize}
 }
 
-%===========================================================
+%=========================================================== %1
 \masection{R\'esum\'e de la proposition}{Executive summary}\label{sec:intro}
 %===========================================================
 \input{resume}
 %===========================================================
 
-%===========================================================
+%=========================================================== %2
 \masection{Contexte, positionnement et objectifs de la proposition}{Context, position and objectives of the proposal}\label{sec:contexte}
 %===========================================================
 \input{contexte}
 %===========================================================
 
-%===========================================================
+%=========================================================== %3
 \masection{Programme scientifique et technique, organisation du projet}{Scientific and technical program, Project organisation}\label{sec:organisation}
 %===========================================================
 
@@ -81,19 +105,19 @@ Avant de soumettre ce document :
 \input{organisation}
 %===========================================================
 
-%===========================================================
+%=========================================================== %4
 \masection{Stratégie de valorisation, de protection et d'exploitation des résultats }{Dissemination and exploitation of results. Intellectual property}\label{sec:valo}
 %===========================================================
 \input{valo.tex}
 %===========================================================
 
-%===========================================================
+%=========================================================== %5
 \masection{Description du partenariat }{Consortium description }\label{sec:consortium}
 %===========================================================
 \input{consortium}
 %===========================================================
 
-%===========================================================
+%=========================================================== 6%
 \masection{Justification scientifique des moyens demandés}{Scientific justification of requested ressources}\label{sec:moyens}
 %===========================================================
 \Mycomment{On présentera ici la justification scientifique et technique des moyens demandés dans le document de soumission  par chaque partenaire et synthétisés à l'échelle du projet dans la fiche ``Tableaux récapitulatifs" du document administratif et financier (dit document de soumission) tel que rempli en ligne sur le site de soumission.
@@ -114,11 +138,32 @@ Chaque partenaire justifiera les moyens qu'il demande en distinguant les différe
 
 \masubsection{Références bibliographiques }{References}\label{sec:refs}
 
+\Mycomment{Inclure la liste des références bibliographiques utilisées dans la partie « Etat de l'art » et les références bibliographiques des partenaires ayant trait au projet.}
+
 \bibliographystyle{alpha}
 %\bibliography{cosys}
 % ficher .bib a fournir!
 
 \masubsection{Biographies}{CV / Resume}\label{sec:bio}
+\Mycomment{(1 page maximum par personne)
+Cf. \masec{qualif}.
+}
+
 \masubsection{Implication des personnes dans d'autres contrats}{Staff involvement in other contracts}\label{sec:implication} 
+\Mycomment{(Un tableau par partenaire)
+Cf. \masec{qualif}.
+Mentionner ici les projets en cours de réalisation soit au sein de programmes de l'ANR, soit auprès d'organismes, de fondations, à l'Union Européenne, etc. que ce soit comme coordinateur ou comme partenaire. Pour chacun, donner le nom de l'appel à projets, le titre du projet et le nom du coordinateur.
+}
+
+%===========================================================
+\begin{center}\begin{minipage}[h]{\textwidth}\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline %=====================================================
+		Partenaire & Participant & PM & Financement & Titre & Coordinateur & Déb/Fin \\ 
+\hline  \irit & I. Ober & ?? & ESA & \fullmde & Astrium & 2009/2011 \\ 
+\hline  \ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\ 
+\hline %=====================================================
+\end{tabular}\end{center}\end{minipage}\end{center}
+%===========================================================
 
 \end{document}

@@ -1,3 +1,4 @@
+\redac{LIFC}
 \masubsection{Programme scientifique et structuration du projet}{Scientific programme, project structure}\label{sec:struct}
 \Mycomment{Présentez le programme scientifique et justifiez la décomposition en tâches du programme de travail en cohérence avec les objectifs poursuivis. 
 Utilisez un diagramme pour présenter les liens entre les différentes tâches (organigramme technique)
@@ -6,8 +7,423 @@ Le cas échéant (programmes exigeant la pluridisciplinarité), démontrer l'articul
 N'oubliez pas les activités et actions correspondant à la dissémination et à la valorisation.
 }
 
+
+
+%===========================================================
+\begin{figure}[htb]\begin{center} %   Figure taches
+%===========================================================
+\shabox{\includegraphics[width=11cm]{img/taches}}%
+\caption{Enchaînement des tâches}\label{fig:taches}
+\end{center}\end{figure}
+%===========================================================
+
+Les différentes étapes  (cf. \fig{taches}) :
+
+\begin{enumerate}
+\item La première étape de ce projet consiste tout d'abord à rédiger le cahier des charges des études de cas choisis.  Prendre en compte les différents aspects quantitatifs des systèmes à réaliser ainsi l'expression des exigences. 
+
+\item L'étape suivante consiste à modéliser ces systèmes en SysML et formaliser les exigences en propriétés. Les propriétés peuvent être deux types et sont complémentaires : fonctionnelles et non fonctionnelles (énergie, puissance, vitesse, pression, temps de réaction ?)
+
+\item A partir de ces modèles, identifier les propriétés qui peuvent être vérifiées sur les modèles SysML (travaux sur les observateurs en passant par des formats intermédiaires)
+
+\item Traduction des modèles SysML en modèles VHDL-AMS en utilisant des règles de transformations adéquates
+
+\item Simulation du modèle VHDL-AMS  à l'aide d'un outil de simulation (Cadence, Smash). Cette étape a pour objectif d'analyser le comportement du système global et récupérer certaines informations dans le but de reformuler les modèles SysML et les propriétés selon certains paramètres
+
+\item Expression des (certaines) exigences en langage PSL (utilisation des éléments des exigences + éléments de modèle SysML) qui peuvent être complémentaires à celles vérifiées au niveau SysML 
+
+\item Vérification des modèles VHDL-AMS à l'aide de model checkers de propriétés (temporelles) décrites en PSL
+
+\item Génération des cas de test à partir de modèles SysML et/ou guidée par les propriétés
+
+\item Validation par cas de test et confrontation avec le modèle physique 
+
+\item Retour d'expériences sur les différents résultats obtenus sur les modèles proposés
+\end{enumerate}
+
+Certaines étapes sont indépendantes et peuvent être traitées en parallèle. On les retrouve dans les Workpackage suivants :
+\begin{description}
+\item[WP1] Mangement du projet et rédaction du cahier des charges
+\item[WP2] Modélisation SysML des études de cas et de leurs exigences 
+\item[WP3] Transformation de modèles SysML et des exigences vers le Hardware
+\item[WP4] Validation et tests 
+\item[WP5] Choix de la palte-forme et implémentions
+\item[WP6] Validation des résultats obtenus dans les étapes précédentes dans le contexte réel
+\end{description}
+
+%------------------------------------------ WP1 -------------------------------
+\subsubsection*{Workpackage 1: Management}
+\begin{description}
+\item[Leader:] \irit{} (Jean-Michel Bruel)
+\item[Participants:] All
+\item[Start:] T0
+\item[End:] T0+40
+\item[Description:] Manage project (communication, tasks and deliverables tracking)
+\end{description}
+
+%------------------------------------------ 1.1 -------------------------------
+\begin{description}
+\item[Task 1.1] -- Web Site  
+\item[Leader:] ???
+\item[Participants:] All
+\item[Deliverable:]
+	\begin{itemize}
+	\item Web Site T0+3
+	\end{itemize}
+\item[Description:] Creation and animation of website
+\end{description}
+%------------------------------------------ 1.2 -------------------------------
+\begin{description}
+\item[Task 1.2] --  Tracking
+\item[Leader:] \irit{} (Jean-Michel Bruel)
+\item[Participants:] Board
+\item[Deliverable:]
+	\begin{itemize}
+	\item Activity report: T0+12, T0+24 and T0+40
+	\end{itemize}
+\item[Description:] Management of project and respect of scheduling of tasks and deliverables.
+\end{description}
+
+%------------------------------------------ WP2 -------------------------------
+\subsubsection*{Workpackage 2: Requirements and SysML Modeling}
+\begin{description}
+\item[Leader:] IRIT (Jean-Michel Bruel)
+\item[Participants:] All
+\item[Start:] T0
+\item[End:] T0+40
+\item[Description:] ce sous-projet a pour but d'établir le modèle SysML. Il sera instantié sur les études de cas. Il permet de décrire les exigences et les vues statiques et dynamiques de l'étude de cas. Transition 1 
+\end{description}
+
+%------------------------------------------ 2.1 -------------------------------
+\begin{description}
+\item[Task 2.1] -- Definition and formalization of SysML kernel 
+\item[Leader:] IRIT
+\item[Participants:] INESS
+\item[Begin:] T0
+\item[End:] T0+12
+\item[Deliverable:]
+	\begin{itemize}
+	\item Guideline for CoSyS modeling approach (including Meta Model SysML)
+	\end{itemize}
+\item[Description:]
+\end{description}
+%------------------------------------------ 2.2 -------------------------------
+\begin{description}
+\item[Task 2.2] --  Language for requirements modeling
+\item[Leader:] INESS
+\item[Participants:] 
+\item[Begin:] T0
+\item[End:] T0+12
+\item[Deliverable:]
+	\begin{itemize}
+	\item State of the art, needs (-> criteria) and choice 
+	\end{itemize}
+\item[Description:] Study of the state of the art and choice for a language to formalize requirements into the SysML requirement Diagram. The idea is to used possibility to associate requirement with the elements of SysML (it is others diagrams that the requirement Diagram) and formalize requirements with a language as PSL, ROSETTA, \ldots
+Est-ce que l?on parle des automates observateurs ?
+
+\end{description}
+%------------------------------------------ 2.3 -------------------------------
+\begin{description}
+\item[Task 2.3] --  Modeling for case study 1 
+\item[Leader:] \irit{} can lead be can't ensure the modeling itself
+\item[Participants:] 
+\item[Begin:] T0+12
+\item[End:] T0+24
+\item[Deliverable:]
+	\begin{itemize}
+	\item Model of case study 1
+	\end{itemize}
+\item[Description:] Realization of case study model (SySML + Requirements).
+\end{description}
+%------------------------------------------ 2.4 -------------------------------
+\begin{description}
+\item[Task 2.4] --  Modeling for case study 2
+\item[Leader:] INESS
+\item[Participants:] 
+\item[Begin:] T0+12
+\item[End:] T0+24
+\item[Deliverable:]
+	\begin{itemize}
+	\item Model of case study 2
+	\end{itemize}
+\item[Description:] Realization of case study model (SySML + Requirements).
+\end{description}
+
+%------------------------------------------ WP3 -------------------------------
+\subsubsection*{Workpackage 3: Model Transformation}
+\begin{description}
+\item[Leader:] LISI (???)
+\item[Participants:] LIFC
+\item[Start:] T0+6
+\item[End:] T0+24
+\item[Description:] ce sous-projet a trois objectifs : i) La définition des transformations SysML vers une langage hardware (VHDL-AMS, SystemC, Verilog). ii) La mise en place des outils de transformation. iii) L'utilisation des exigences pour définir les propriétés hardware (PSL ou Rosetta) à vérifier. Transitions 3 et 4
+\end{description}
+%------------------------------------------ 3.1 -------------------------------
+\begin{description}
+\item[Task 3.1] --  Definition of translation rules of SysML model into Hardware models 
+\item[Leader:] LISI
+\item[Participants:] 
+\item[Begin:] T0+12
+\item[End:] T0+24
+\item[Deliverable:]
+	\begin{itemize}
+	\item Rules
+	\end{itemize}
+\item[Description:]
+\end{description}
+%------------------------------------------ 3.2 -------------------------------
+\begin{description}
+\item[Task 3.2] --  Definition of translation rules of SysML into Hardware properties
+\item[Leader:] LIFC
+\item[Participants:] 
+\item[Begin:] T0+12
+\item[End:] T0+30
+\item[Deliverable:]
+	\begin{itemize}
+	\item Rules
+	\end{itemize}
+\item[Description:] this task will use information of Requirement Diagram and element linked into the others SysML diagram to produce Hardware properties
+\end{description}
+
+%------------------------------------------ WP4 -------------------------------
+\subsubsection*{Workpackage 4: Verification, Simulation and Test generation}
+\begin{description}
+\item[Leader:] LIFC (Fabrice Bouquet)
+\item[Participants:] INESS, IRIT, SMA
+\item[Start:] T0+6
+\item[End:] T0+40
+\item[Description:] Transitions 2, 5, 6 et 11
+\end{description}
+%------------------------------------------ 4.1 -------------------------------
+\begin{description}
+\item[Task 4.1] -- Verification of SysML Model  
+\item[Leader:] IRIT
+\item[Participants:] LIFC
+\item[Begin:] T0+12
+\item[End:] T0+40
+\item[Deliverable:]
+	\begin{itemize}
+	\item Component for platform + Results of verification on the case studies
+	\end{itemize}
+\item[Description:] This task defines and realizes a software component dedicated to realize verification on the SysML model. The first step is to define which kind of verification can be done.
+\end{description}
+%------------------------------------------ 4.2 -------------------------------
+\begin{description}
+\item[Task 4.2] -- Verification of properties on hardware models  
+\item[Leader:] INESS
+\item[Participants:] LIFC
+\item[Begin:] T0+12
+\item[End:] T0+30
+\item[Deliverable:]
+	\begin{itemize}
+	\item Rules
+	\end{itemize}
+\item[Description:] This task defines and realizes a software component dedicated to realize verification on the Hardware models. The first step is to define which kind of verification can be done.
+\end{description}
+%------------------------------------------ 4.3 -------------------------------
+\begin{description}
+\item[Task 4.3] -- Component for test generation from SysML  
+\item[Leader:] SMA
+\item[Participants:] LIFC
+\item[Begin:] T0+6
+\item[End:] T0+36
+\item[Deliverable:]
+	\begin{itemize}
+	\item Description of test generation component for platform
+	\end{itemize}
+\item[Description:] Definition of dedicated algorithms for test generation based on SysML model and formalized requirements. Design and implement of components for test generation.
+\end{description}
+%------------------------------------------ 4.4 -------------------------------
+\begin{description}
+\item[Task 4.4] --  Simulation of the hardware model driven by tests 
+\item[Leader:] LIFC
+\item[Participants:] SMA
+\item[Begin:] T0+24
+\item[End:] T0+36
+\item[Deliverable:]
+	\begin{itemize}
+	\item Component
+	\end{itemize}
+\item[Description:] Realization of test publisher for hardware models simulation tools as Cadence or Smash.
+\end{description}
+%------------------------------------------ 4.5 -------------------------------
+\begin{description}
+\item[Task 4.5] -- Test execution into case studies 
+\item[Leader:] LIFC
+\item[Participants:] SMA
+\item[Begin:] T0+24
+\item[End:] T0+36
+\item[Deliverable:]
+	\begin{itemize}
+	\item Component
+	\end{itemize}
+\item[Description:] Realization of test publisher for implementation
+\end{description}
+
+%------------------------------------------ WP5 -------------------------------
+\subsubsection*{Workpackage 5: Implementation of platform for micro-system development based on Papyrus/Eclipse}
+\begin{description}
+\item[Leader:] LIFC (Fabrice Ambert)
+\item[Participants:] SMA
+\item[Start:] T0
+\item[End:] T0+40
+\item[Description:] Transitions 1 à 6 et 11
+\end{description}
+%------------------------------------------ 5.1 -------------------------------
+\begin{description}
+\item[Task 5.1] -- Architecture and technological choice for CoSyS Platform  
+\item[Leader:] SMA
+\item[Participants:] LIFC
+\item[Begin:] T0
+\item[End:] T0+6
+\item[Deliverable:]
+	\begin{itemize}
+	\item Guide and repository for Platform
+	\end{itemize}
+\item[Description:] Choix technologique de l?environnement
+\end{description}
+%------------------------------------------ 5.2 -------------------------------
+\begin{description}
+\item[Task 5.2] --  Integration of developed modules 
+\item[Leader:] LIFC
+\item[Participants:] SMA
+\item[Begin:] T0+6
+\item[End:] T0+40
+\item[Deliverable:] 
+	\begin{itemize}
+	\item Platform
+	\end{itemize}
+\item[Description:] Realization of open source platform
+\end{description}
+%------------------------------------------ 5.3 -------------------------------
+\begin{description}
+\item[Task 5.3] --  Platform Validation
+\item[Leader:] FEMTO
+\item[Participants:] LIFC, SMA
+\item[Begin:] T0+24
+\item[End:] T0+40
+\item[Deliverable:]
+	\begin{itemize}
+	\item Feedback of platform uses
+	\end{itemize}
+\item[Description:]
+\end{description}
+
+%------------------------------------------ WP6 -------------------------------
+\subsubsection*{Workpackage 6: Validation in the real context}
+\begin{description}
+\item[Leader:] ??? (Indus)
+\item[Participants:] INESS, FEMTO-ST
+\item[Start:] T0
+\item[End:] T0+40
+\item[Description:] Transitions 7,8 et 9
+\end{description}
+%------------------------------------------ 6.1 -------------------------------
+\begin{description}
+\item[Task 6.1] -- Implementation of 1st case study 
+\item[Leader:] \femto
+\item[Participants:] 
+\item[Begin:] T0
+\item[End:] T0+24
+\item[Deliverable:]
+	\begin{itemize}
+	\item Real System
+	\end{itemize}
+\item[Description:]
+realization of real system depicted in case study 1. 2 steps for case study implementation:
+\begin{itemize}
+\item Prototyping to tune parameters for SysML model of system
+\item Back to Back implementation and validation of implementation with test generation (transition 7)
+\item Synthetization of implementation from hardware models (transitions 8 and 9)
+\end{itemize}
+\end{description} 
+
+%------------------------------------------ 6.2 -------------------------------
+\begin{description}
+\item[Task 6.2] --  Consistency between real system and simulation for 1st case study
+\item[Leader:] \femto
+\item[Participants:] 
+\item[Begin:] T0+24
+\item[End:] T0+30
+\item[Deliverable:]
+	\begin{itemize}
+	\item ??
+	\end{itemize}
+\item[Description:]
+\end{description}
+%------------------------------------------ 6.3 -------------------------------
+\begin{description}
+\item[Task 6.3] --  Implementation of 2nd case study
+\item[Leader:] Indus
+\item[Participants:] 
+\item[Begin:] T0
+\item[End:] T0+32
+\item[Deliverable:]
+	\begin{itemize}
+	\item Real System
+	\end{itemize}
+\item[Description:] realization of real system depicted in case study
+\end{description}
+%------------------------------------------ 6.4 -------------------------------
+\begin{description}
+\item[Task 6.4] --  Consistency between real system and simulation for 2nd case study
+\item[Leader:] Indus
+\item[Participants:] 
+\item[Begin:] T0+32
+\item[End:] T0+40
+\item[Deliverable:]
+	\begin{itemize}
+	\item ??
+	\end{itemize}
+\item[Description:]
+\end{description}
+%------------------------------------------ 6.5 -------------------------------
+\begin{description}
+\item[Task 6.5] --  Evaluation of process
+\item[Leader:] Indus
+\item[Participants:] 
+\item[Begin:] T0+36
+\item[End:] T0+40
+\item[Deliverable:]
+	\begin{itemize}
+	\item Platform
+	\end{itemize}
+\item[Description:]
+\end{description}
+
+\Mycomment{A discuter :
+\begin{enumerate}
+\item Quels apports scientifiques pour chacun des partenaires ?
+\item Etat de l'art sur chacune des transitions (voir dessin) :
+\begin{itemize}
+\item Sur les travaux de la vérification formelle au niveau SysML
+\item Travaux sur les transformations de modèles vers des modèles Hardware
+\item Génération de test à partir de modèles SysML 
+\item Les logiques d'expression de propriétés non fonctionnelles
+\item Les techniques de vérification de modèles hardware
+\end{itemize}
+\end{enumerate}
+}
+
 \masubsection{Management du projet }{Project management}\label{sec:management}
+\redac{JMB}
 \Mycomment{Préciser les aspects organisationnels du projet et les modalités de coordination (si possible individualisation d'une tâche de coordination).}
+
+A Board and project coordinator manages the project. Scientific leader of each partner composes the board and the project coordinator:
+
+\begin{itemize}
+\item Project coordinator: J.-M. Bruel
+\item Partner leaders: 
+\begin{description}
+\item[FEMTO :] J.-F. Manceau
+\item[IRIT :] Iulian Ober
+\item[INESS :] Yves-André Chapuis
+\item[LIFC :] Hassan Mountassir
+\item[LISI :] XXX
+\item[SMA :] Bruno Legeard
+\item[Indus :] XXX
+\end{description}
+\end{itemize}
 
 \masubsection{Description des travaux par tâche }{Description by task}\label{sec:tasks}
 \Mycomment{Pour chaque tâche, décrire : 

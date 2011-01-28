@@ -89,14 +89,6 @@
 \def\singleAuthorAddress{\ifcosys@french Adresse \else Address \fi}
 \def\multipleAuthorsAddresses{\ifcosys@french Adresses \else Addresses \fi}
 \def\w@acro{\ifcosys@french Acronyme \else Acronym \fi}
-%==================================== Infos sur le projet et l'appel
-\def\acronyme{\sc{CoSys}}
-\def\titreProjet{\textbf{Co}nception de \textbf{Sys}t\`emes}
-\def\titreProjetUK{\textbf{Co}design of \textbf{Sys}tems}
-\def\annee{2011}
-\def\totalDemande{900K}
-\def\totalDuree{36}
-\def\appel{\textsc{Ing\'enierie Num\'erique \& S\'ecurit\'e}}
 %====================================
 \xdefinecolor{navy}{named}{Navy}
 \xdefinecolor{purple}{named}{DarkMagenta}
@@ -106,6 +98,8 @@
 \newcommand{\masubsubsection}[2]{\subsubsection*{\textcolor{purple}{\ifcosys@french #1 \else #2 \fi}}}
 \newcommand{\monlabel}[2]{\textsc{\ifcosys@french #1 \else #2 \fi}}
 \newcommand{\masec}[1]{section~\ref{sec:#1}}       % abstract for sections
+\newcommand{\fig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\redac}[1]{\marginpar{\small\shabox{\textcolor{red}{#1}}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Date (français ou anglais)
@@ -234,7 +228,6 @@
 \pagenumbering{arabic}%
 }
 \endinput
-
 
 %%
 %% End of file `cosys.sty'.
