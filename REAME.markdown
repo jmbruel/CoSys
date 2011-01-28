@@ -1,4 +1,4 @@
-# Propal ANR CoSys
+# Propal ANR CoSys 2011
 
 This files are LaTeX files for the CoSys proposal answer to the
 [ANR INS](http://www.agence-nationale-recherche.fr/programmes-de-recherche/appel-detail/ingenierie-numerique-et-securite-ins-2011/) call.
