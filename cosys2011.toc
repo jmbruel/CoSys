@@ -16,18 +16,18 @@
 \contentsline {subsection}{\numberline {2.4}\leavevmode {\color {navy}\textsc {Objectifs et caract\`ere ambitieux/novateur du projet }}}{5}{subsection.2.4}
 \contentsline {section}{\numberline {3}\textsc {\leavevmode {\color {purple}Programme scientifique et technique, organisation du projet }}}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}\leavevmode {\color {navy}\textsc {Programme scientifique et structuration du projet }}}{6}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}\leavevmode {\color {navy}\textsc {Management du projet }}}{14}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}\leavevmode {\color {navy}\textsc {Description des travaux par t\^ache }}}{14}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}\leavevmode {\color {navy}\textsc {Calendrier des t\^aches, livrables et jalons }}}{15}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.2}\leavevmode {\color {navy}\textsc {Description des travaux par t\^ache }}}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}\leavevmode {\color {navy}\textsc {Management du projet }}}{14}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}\leavevmode {\color {navy}\textsc {Calendrier des t\^aches, livrables et jalons }}}{14}{subsection.3.4}
 \contentsline {section}{\numberline {4}\textsc {\leavevmode {\color {purple}Strat\'egie de valorisation, de protection et d'exploitation des r\'esultats }}}{15}{section.4}
 \contentsline {section}{\numberline {5}\textsc {\leavevmode {\color {purple}Description du partenariat }}}{15}{section.5}
-\contentsline {subsection}{\numberline {5.1}\leavevmode {\color {navy}\textsc {Description, ad\'equation et compl\'ementarit\'e des partenaires }}}{16}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}INESS}{16}{subsubsection.5.1.1}
-\contentsline {subsubsection}{\numberline {5.1.2}FEMTO-ST}{16}{subsubsection.5.1.2}
-\contentsline {subsubsection}{\numberline {5.1.3}LIFC}{16}{subsubsection.5.1.3}
-\contentsline {subsubsection}{\numberline {5.1.4}LISI}{16}{subsubsection.5.1.4}
-\contentsline {subsubsection}{\numberline {5.1.5}IRIT}{17}{subsubsection.5.1.5}
-\contentsline {subsubsection}{\numberline {5.1.6}...}{17}{subsubsection.5.1.6}
+\contentsline {subsection}{\numberline {5.1}\leavevmode {\color {navy}\textsc {Description, ad\'equation et compl\'ementarit\'e des partenaires }}}{15}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}FEMTO-ST}{16}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}LIFC}{16}{subsubsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.3}LISI}{16}{subsubsection.5.1.3}
+\contentsline {subsubsection}{\numberline {5.1.4}INESS}{16}{subsubsection.5.1.4}
+\contentsline {subsubsection}{\numberline {5.1.5}IRIT}{16}{subsubsection.5.1.5}
+\contentsline {subsubsection}{\numberline {5.1.6}SMA}{17}{subsubsection.5.1.6}
 \contentsline {subsection}{\numberline {5.2}\leavevmode {\color {navy}\textsc {Qualification du coordinateur du projet }}}{17}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}\leavevmode {\color {navy}\textsc {Qualification, r\^ole et implication des participants }}}{17}{subsection.5.3}
 \contentsline {section}{\numberline {6}\textsc {\leavevmode {\color {purple}Justification scientifique des moyens demand\'es }}}{18}{section.6}
@@ -35,5 +35,5 @@
 \contentsline {subsection}{\numberline {6.2}\leavevmode {\color {navy}\textsc {... }}}{19}{subsection.6.2}
 \contentsline {section}{\numberline {7}\textsc {\leavevmode {\color {purple}Annexes }}}{20}{section.7}
 \contentsline {subsection}{\numberline {7.1}\leavevmode {\color {navy}\textsc {R\'ef\'erences bibliographiques }}}{20}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}\leavevmode {\color {navy}\textsc {Biographies }}}{21}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}\leavevmode {\color {navy}\textsc {Implication des personnes dans d'autres contrats }}}{21}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.2}\leavevmode {\color {navy}\textsc {Biographies }}}{20}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}\leavevmode {\color {navy}\textsc {Implication des personnes dans d'autres contrats }}}{20}{subsection.7.3}
